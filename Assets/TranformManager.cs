@@ -12,11 +12,13 @@ public class TranformManager : MonoBehaviour {
     public Vector3 originalRotado;
     public Vector3 originalEscalado;
 
-    public bool isRotated;  
+    public bool isRotated;
+    public bool isScaled;
 
     // Use this for initialization
     void Start () {
         isRotated = false;
+        isScaled = false;
         originalRotado = myObject.transform.eulerAngles;
         originalEscalado = myObject.transform.localScale;
     }
@@ -25,7 +27,7 @@ public class TranformManager : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.R))
         {
-            if (isRotated)
+            if (isRotated==true)
             {
                 myObject.transform.eulerAngles = originalRotado;
                 isRotated = false;
@@ -37,5 +39,20 @@ public class TranformManager : MonoBehaviour {
             }
             
         }
-	}
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (isScaled == true)
+            {
+                myObject.transform.localScale = originalEscalado;
+                isScaled = false;
+            }
+            else
+            {
+                myObject.transform.localScale = escalado.transform.localScale;
+                isScaled = true;
+            }
+
+        }
+    }
 }
